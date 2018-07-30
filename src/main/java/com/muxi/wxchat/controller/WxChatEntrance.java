@@ -1,21 +1,15 @@
 package com.muxi.wxchat.controller;
-
-
 import com.muxi.wxchat.constant.WXStaticConstant;
-import com.muxi.wxchat.function.menu.CreateMenu;
-import com.muxi.wxchat.function.menu.MenuManager;
 import com.muxi.wxchat.pojo.AccessToken;
 import com.muxi.wxchat.services.logicservices.authentication.AccessTokenAuthentication;
 import com.muxi.wxchat.services.logicservices.createMenu.MenuFunction;
+import com.muxi.wxchat.services.logicservices.informationInteraction.artificialMenu.AritificialMenu;
 import com.muxi.wxchat.util.LoggerUtil;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-
 /*
  *------------------------------.
  *@ClassName : WxChatEntrance
@@ -34,6 +28,9 @@ public class WxChatEntrance {
 
     @Autowired
     private MenuFunction menuFunction;
+
+    @Autowired
+    private AritificialMenu aritificialMenu;
     /*
     *------------------------------.
     *@ClassName : WxChatEntrance
@@ -54,13 +51,15 @@ public class WxChatEntrance {
     menuFunction.createMenu(accessToken);
 
     /*信息互动*/
-
-
-
-
+    /*首次登陆echostr不为null*/
+    if(null != request.getParameter("echostr") && request.getParameter("echostr").length() > 1){
+    /*发送欢迎语及基础菜单*/
+    aritificialMenu.sendStatement(response,aritificialMenu.getRequestInitializationMenu());
+    }else{
+    /*互动中*/
 
     }
-
+    }
     /*
     *------------------------------.
     *@ClassName : WxChatEntrance

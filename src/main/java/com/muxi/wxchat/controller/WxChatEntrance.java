@@ -8,6 +8,9 @@ import com.muxi.wxchat.util.LoggerUtil;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 /*
@@ -42,6 +45,7 @@ public class WxChatEntrance {
     *@Version : 1.0
     *------------------------------
     */
+    @RequestMapping(value = "getEntrnceMethod.html",method = RequestMethod.GET)
     public void getEntrnceMethod(HttpServletRequest request, HttpServletResponse response){
     /*验证身份 并获取accessToken*/
     AccessToken accessToken = accessTokenAuthentication.getAccessToken(WXStaticConstant.APP_ID, WXStaticConstant.APPSECRET);
@@ -71,6 +75,7 @@ public class WxChatEntrance {
     *@Version : 1.0
     *------------------------------
     */
+    @RequestMapping(value = "postEntrnceMethod.html",method = RequestMethod.POST)
     public void postEntrnceMethod(HttpServletRequest request, HttpServletResponse response){
         getEntrnceMethod(request,response);
     }

@@ -1,0 +1,30 @@
+server:
+  port: 1474
+
+spring:
+        aop:
+            proxy-target-class: true
+        datasource:
+              url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
+              driver-class-name: oracle.jdbc.driver.OracleDriver
+              username: scott
+              password: tigger
+              type: com.alibaba.druid.pool.DruidDataSource
+        redis:
+             host: 127.0.0.1
+             password: muxi
+             port: 6379
+             jedis:
+               pool:
+                 max-active: 1000
+                 max-idle: 100
+                 min-idle: 1
+                 max-wait: -1
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.muxi.wxchat.pojo
+
+
+
+
+

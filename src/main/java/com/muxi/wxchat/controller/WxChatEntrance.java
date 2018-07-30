@@ -52,7 +52,7 @@ public class WxChatEntrance {
     LoggerUtil.setLogger("accessToken= "+accessToken);
 
     /*菜单创建*/
-    menuFunction.createMenu(accessToken);
+    //menuFunction.createMenu(accessToken);
 
     /*信息互动*/
     /*首次登陆echostr不为null*/

@@ -14,15 +14,14 @@ package com.muxi.wxchat.services.logicservices.informationInteraction.artificial
 import com.muxi.wxchat.constant.TuLingStaticConstant;
 import com.muxi.wxchat.services.logicservices.informationInteraction.artificialMenu.AritificialMenu;
 import com.muxi.wxchat.util.LoggerUtil;
-import org.json.JSONException;
-import org.json.JSONObject;
+import net.sf.json.JSONException;
+import net.sf.json.JSONObject;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.springframework.stereotype.Service;
-
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -95,7 +94,7 @@ public class AritificialMenuImpl implements AritificialMenu {
             return "小灵还没有理解您说的意思呢.....";
         }
         try {
-            JSONObject json = new JSONObject(result);
+            JSONObject json = JSONObject.fromObject(result);
             if (100000 == json.getInt("code")) {
                 result = json.getString("text");
             }

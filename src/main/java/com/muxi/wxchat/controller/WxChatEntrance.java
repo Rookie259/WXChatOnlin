@@ -61,7 +61,6 @@ public class WxChatEntrance {
     aritificialMenu.sendStatement(response,aritificialMenu.getRequestInitializationMenu());
     }else{
     /*互动中*/
-
     }
     }
     /*

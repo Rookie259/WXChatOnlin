@@ -35,7 +35,10 @@ public class CreateMenu {
         String jsonMenu = JSONObject.fromObject(menu).toString();
         LoggerUtil.setLogger("jsonMenu=" + jsonMenu);
 
-        JSONObject jsonObject = httpRequest.httpRequest(url, "POST", jsonMenu);
+        //JSONObject jsonObject = httpRequest.httpRequest(url, "GRT", jsonMenu);
+        if(httpRequest.httpRequest(url, "GRT", jsonMenu) == null)
+            System.out.println(httpRequest.httpRequest(url, "GRT", jsonMenu));
+        JSONObject jsonObject = httpRequest.httpRequest(url, "GRT", jsonMenu);
         LoggerUtil.setLogger("jsonObject=" + jsonObject);
 
         if (null != jsonObject) {

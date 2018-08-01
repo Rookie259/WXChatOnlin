@@ -16,7 +16,9 @@ import com.muxi.wxchat.function.menu.MenuManager;
 import com.muxi.wxchat.pojo.AccessToken;
 import com.muxi.wxchat.services.logicservices.createMenu.MenuFunction;
 import com.muxi.wxchat.util.LoggerUtil;
+import org.springframework.stereotype.Service;
 
+@Service
 public class MenuFunctionImpl implements MenuFunction {
     @Override
     public void createMenu(AccessToken accessToken) {

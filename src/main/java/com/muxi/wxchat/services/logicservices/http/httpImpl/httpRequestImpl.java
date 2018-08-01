@@ -16,6 +16,7 @@ import com.muxi.wxchat.services.logicservices.http.HttpRequest;
 import com.muxi.wxchat.util.DateUtil;
 import com.muxi.wxchat.util.LoggerUtil;
 import net.sf.json.JSONObject;
+import org.springframework.stereotype.Service;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
@@ -28,7 +29,7 @@ import java.io.OutputStream;
 import java.net.ConnectException;
 import java.net.URL;
 import java.security.SecureRandom;
-
+@Service
 public class httpRequestImpl implements HttpRequest {
 
 
@@ -104,6 +105,7 @@ public class httpRequestImpl implements HttpRequest {
         } catch (Exception e) {
             LoggerUtil.setLogger("连接失败。失败原因: " + e);
         }
+        LoggerUtil.setLogger("------------------------------------------------"+jsonObject.toString());
         return jsonObject;
     }
 }

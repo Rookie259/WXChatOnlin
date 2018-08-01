@@ -58,7 +58,7 @@ public class AritificialMenuImpl implements AritificialMenu {
         stringBuffer.append("回复上一任何选项字母即可领取干货！");
         stringBuffer.append("点一点，即领取！");
         stringBuffer.append("想领取其他干货或了解其他内容的,到菜单栏看一看有=哟！总会有惊喜的!");
-        return null;
+        return stringBuffer.toString();
     }
 
     @Override

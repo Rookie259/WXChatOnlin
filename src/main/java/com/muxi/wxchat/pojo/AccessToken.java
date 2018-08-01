@@ -34,4 +34,13 @@ public class AccessToken {
     public int getExpiresIn() {
         return expiresIn;
     }
+
+
+    @Override
+    public String toString() {
+        return "AccessToken{" +
+                "token='" + token + '\'' +
+                ", expiresIn=" + expiresIn +
+                '}';
+    }
 }

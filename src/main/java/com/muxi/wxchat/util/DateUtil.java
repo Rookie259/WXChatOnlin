@@ -1,5 +1,6 @@
 package com.muxi.wxchat.util;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -20,7 +21,8 @@ import java.util.TimeZone;
 public class DateUtil {
 
         /** 定义常量 **/
-        public static final String DATE_FULL_STR = "yyyy-MM-dd HH:mm:ss";
+        public static final String DATE_FULL_STR_LONG = "yyyy-MM-dd HH:mm:ss";
+        public static final String DATE_FULL_STR_SHORT = "yyyy-MM-dd";
         public static final String DATE_FULL_STR_ = "yyyy/MM/dd";
         public static final String DATE_LONG_STR = "yyyy-MM-dd kk:mm:ss.SSS";
         public static final String DATE_SMALL_STR = "yyyy-MM-dd";
@@ -58,10 +60,32 @@ public class DateUtil {
          * @return
          */
         public static String getNowTime() {
-            SimpleDateFormat df = new SimpleDateFormat(DATE_FULL_STR);
+            SimpleDateFormat df = new SimpleDateFormat(DATE_FULL_STR_LONG);
             return df.format(new Date());
         }
 
+    public static String getNowTimeShort() {
+        SimpleDateFormat df = new SimpleDateFormat(DATE_FULL_STR_SHORT);
+        return df.format(new Date());
+    }
+
+    /*
+    *------------------------------.
+    *@ClassName : DateUtil
+    *@创建人 : 沐惜
+    *@创建时间 : 2018/8/6 19:41
+    *@方法描述 : 解析xml的时间戳
+    *@Param :
+    @Return :
+    *@Version : 1.0
+    *------------------------------
+    */
+    public static String formatTimeByCreateTime(Long createTime) {
+        // 将微信传入的CreateTime转换成long类型，再乘以1000
+        long msgCreateTime = Long.parseLong(createTime.toString()) * 1000L;
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return format.format(new Date(msgCreateTime));
+    }
 
         /**
          * 获取系统当前时间(指定返回类型)
@@ -81,7 +105,7 @@ public class DateUtil {
          * @return
          */
         public static Date parse(String date) {
-            return parse(date, DATE_FULL_STR);
+            return parse(date, DATE_FULL_STR_LONG);
         }
 
         /**
@@ -104,7 +128,7 @@ public class DateUtil {
          * @return String
          */
         public static String timestampToDate(long timestamp) {
-            return timestampToDate(timestamp, DATE_FULL_STR);
+            return timestampToDate(timestamp, DATE_FULL_STR_SHORT);
         }
 
         /**
@@ -400,7 +424,7 @@ public class DateUtil {
         public static long dateToUnixTimestamp(String date) {
             long timestamp = 0;
             try {
-                timestamp = new SimpleDateFormat(DATE_FULL_STR).parse(date)
+                timestamp = new SimpleDateFormat(DATE_FULL_STR_LONG).parse(date)
                         .getTime();
             } catch (ParseException e) {
                 e.printStackTrace();
@@ -444,7 +468,7 @@ public class DateUtil {
          * @return String 日期字符串
          */
         public static String unixTimestampToDate(long timestamp) {
-            SimpleDateFormat sd = new SimpleDateFormat(DATE_FULL_STR);
+            SimpleDateFormat sd = new SimpleDateFormat(DATE_FULL_STR_LONG);
             sd.setTimeZone(TimeZone.getTimeZone("GMT+8"));
             return sd.format(new Date(timestamp));
         }
@@ -470,7 +494,7 @@ public class DateUtil {
          * @return String 日期字符串
          */
         public static String timeStamp2Date(long timestamp) {
-            String date = new SimpleDateFormat(DATE_FULL_STR).format(new Date(
+            String date = new SimpleDateFormat(DATE_FULL_STR_LONG).format(new Date(
                     timestamp));
             return date;
         }

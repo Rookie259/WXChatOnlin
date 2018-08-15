@@ -11,6 +11,7 @@ package com.muxi.wxchat.services.logicservices.formatParsing.formatParsingImpl;
  *------------------------------
  */
 
+import com.muxi.wxchat.pojo.Message;
 import com.muxi.wxchat.pojo.formatParsing.XmlReceive;
 import com.muxi.wxchat.services.logicservices.formatParsing.XMLFormatParsing;
 
@@ -20,9 +21,13 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 import com.muxi.wxchat.services.logicservices.informationInteraction.artificialMenu.AritificialMenu;
 import com.muxi.wxchat.util.LoggerUtil;
+import com.muxi.wxchat.util.MapUtil;
+import com.muxi.wxchat.util.MessageUtil;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
@@ -49,8 +54,13 @@ public class XMLFormatParsingImpl implements XMLFormatParsing {
     @Override
     public String analysisXML(String xml) {
         /** 解析xml数据 */
-        XmlReceive xmlReceive = getMsgEntity(xml);
-
+        XmlReceive xmlReceive = null;
+        try {
+            xmlReceive = getMsgEntity(new String(xml.getBytes("UTF-8"),"utf-8"));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            LoggerUtil.setLogger("转码失败");
+        }
         /** 以文本消息为例，调用图灵机器人api接口，获取回复内容 */
         String result = "";
         if ("text".endsWith(xmlReceive.getMsgType())) {
@@ -68,7 +78,9 @@ public class XMLFormatParsingImpl implements XMLFormatParsing {
                 return null;
 
             // 将字符串转化为XML文档对象
+            /*存在xml在序言*/
             Document document = DocumentHelper.parseText(strXml);
+            //Document document=xmlReader.read(strXml);
             // 获得文档的根节点
             Element root = document.getRootElement();
             // 遍历根节点下所有子节点
@@ -78,7 +90,7 @@ public class XMLFormatParsingImpl implements XMLFormatParsing {
             xmlReceive = new XmlReceive();
             //利用反射机制，调用set方法
             //获取该实体的元类型
-            Class<?> c = Class.forName("com.muxi.wxvipcn.entity.ReceiveXmlEntity");
+            Class<?> c = Class.forName("com.muxi.wxchat.pojo.messageFormat.ReceiveXmlEntity");
             xmlReceive = (XmlReceive) c.newInstance();//创建这个实体的对象
 
             while (iter.hasNext()) {
@@ -112,4 +124,27 @@ public class XMLFormatParsingImpl implements XMLFormatParsing {
         sb.append("]]></Content><FuncFlag>0</FuncFlag></xml>");
         return sb.toString();
     }
+
+    @Override
+    public <T> T tranRequestOfMessage(HttpServletRequest request) {
+        Map<String,String> map = MessageUtil.xmlToMap(request);
+        try {
+            Object message = MapUtil.mapToBean(map,Class.forName("com.muxi.wxchat.pojo.Message"));
+            return (T) message;
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public String beanTranXML(Class<?> cls) {
+
+
+
+
+        return null;
+    }
+
+
 }

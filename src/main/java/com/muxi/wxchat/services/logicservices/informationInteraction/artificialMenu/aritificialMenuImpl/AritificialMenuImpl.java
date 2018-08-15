@@ -45,21 +45,7 @@ public class AritificialMenuImpl implements AritificialMenu {
         }
     }
 
-    @Override
-    public String getRequestInitializationMenu() {
-        StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append("感谢关注XX之家!");
-        stringBuffer.append("\n");
-        stringBuffer.append("你从哪里知道XX微信的?");
-        stringBuffer.append("告诉我,有干货领取哦!");
-        stringBuffer.append("A:今日头条");
-        stringBuffer.append("B:百度贴吧");
-        stringBuffer.append("C:知乎问答");
-        stringBuffer.append("回复上一任何选项字母即可领取干货！");
-        stringBuffer.append("点一点，即领取！");
-        stringBuffer.append("想领取其他干货或了解其他内容的,到菜单栏看一看有=哟！总会有惊喜的!");
-        return stringBuffer.toString();
-    }
+
 
     @Override
     public String getDry() {
@@ -104,4 +90,107 @@ public class AritificialMenuImpl implements AritificialMenu {
         }
         return result;
     }
+
+    /*----------------------------------------------------------------------------------------------------------------*/
+    /*信息模本*/
+    /*后期需放在数据库*/
+    @Override
+    public String getRequestInitializationMenu() {
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append("感谢关注千博之家!\ue032\ue032\ue032\ue032\ue032\n");
+        stringBuffer.append("你从哪里知道T园的?\n");
+        stringBuffer.append("告诉我,有干货领取哦!\n");
+        stringBuffer.append("1:今日头条\n");
+        stringBuffer.append("2:百度贴吧\n");
+        stringBuffer.append("3:知乎问答\n");
+        stringBuffer.append("4:其他\n");
+        stringBuffer.append("回复任何选项即可领取干货！\n");
+        stringBuffer.append("点一点，即领取！\n");
+        stringBuffer.append("想领取其他干货或了解其他内容的,到菜单栏看一看哟！总会有惊喜的!\n");
+        stringBuffer.append("\n");
+        stringBuffer.append("如您在使用改公众号的过程中,有任何的宝贵意见以及为满足的需求都可在以下邮箱中留下宝贵意见\n");
+        stringBuffer.append("\n");
+        stringBuffer.append("rookiegdn@163.com\ue032\ue032\ue032\ue032");
+        return stringBuffer.toString();
+    }
+
+    @Override
+    public String fontBackOrg() {
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append("点一点,干货到手:\n");
+        stringBuffer.append("回复 A 领取前端资料\n");
+        stringBuffer.append("回复 B 领取JAVA资料\n");
+       /* stringBuffer.append("回复 C 领取Python资料\n");
+        stringBuffer.append("回复 D 领取PHP资料\n");*/
+        stringBuffer.append("回复 C 领取Android资料\n");
+        stringBuffer.append("回复 D 领取PS资料\n");
+        stringBuffer.append("\ue032\ue032\ue032\ue032\ue032\ue032\ue032");
+        return stringBuffer.toString();
+    }
+
+    @Override
+    public String attentionReplyHandle(String param) {
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append("干活领取地址:\n");
+        switch (param){
+            case "A" :
+                stringBuffer.append("前端基础领取地址:\n");
+                stringBuffer.append("链接：https://pan.baidu.com/s/1BWunCMhPiYRRh4ZCRlDh1Q 密码：ew4j\n");
+                stringBuffer.append("前端中级领取地址:\n");
+                stringBuffer.append("链接：https://pan.baidu.com/s/1bPgLnrKSlmuonsqNqfWleg 密码：schp\n");
+                stringBuffer.append("前端项目实战领取地址:\n");
+                stringBuffer.append("链接：https://pan.baidu.com/s/10855JuMGaPQ9s6NOHE_5Aw 密码：jd1m\n");
+                  break;
+            case "a" :
+                stringBuffer.append("前端基础领取地址:\n");
+                stringBuffer.append("链接：https://pan.baidu.com/s/1BWunCMhPiYRRh4ZCRlDh1Q 密码：ew4j\n");
+                stringBuffer.append("前端中级领取地址:\n");
+                stringBuffer.append("链接：https://pan.baidu.com/s/1bPgLnrKSlmuonsqNqfWleg 密码：schp\n");
+                stringBuffer.append("前端项目实战领取地址:\n");
+                stringBuffer.append("链接：https://pan.baidu.com/s/10855JuMGaPQ9s6NOHE_5Aw 密码：jd1m\n");
+                break;
+
+            case "B" :
+                stringBuffer.append("JAVA基础领取地址:\n");
+                stringBuffer.append("链接：https://pan.baidu.com/s/10FL3CKBaArahtRocrCo4og 密码：3y70\n");
+                stringBuffer.append("JAVA中级领取地址:\n");
+                stringBuffer.append("链接：https://pan.baidu.com/s/14Me1BoNCmTh_CZ-UKkfW2A 密码：74ng\n");
+                stringBuffer.append("JAVA高级领取地址:\n");
+                stringBuffer.append("链接：https://pan.baidu.com/s/1y3MBSHx7VYSc6fN17Q6XuQ 密码：l40b\n");
+                  break;
+            case "b" :
+                stringBuffer.append("JAVA基础领取地址:\n");
+                stringBuffer.append("链接：https://pan.baidu.com/s/10FL3CKBaArahtRocrCo4og 密码：3y70\n");
+                stringBuffer.append("JAVA中级领取地址:\n");
+                stringBuffer.append("链接：https://pan.baidu.com/s/14Me1BoNCmTh_CZ-UKkfW2A 密码：74ng\n");
+                stringBuffer.append("JAVA高级领取地址:\n");
+                stringBuffer.append("链接：https://pan.baidu.com/s/1y3MBSHx7VYSc6fN17Q6XuQ 密码：l40b\n");
+                break;
+            case "C" :
+                stringBuffer.append("Android领取地址:\n");
+                stringBuffer.append("链接：https://pan.baidu.com/s/11n-XkHhI7jLiC8vbSF8jWg 密码：eagc\n");
+                  break;
+            case "c" :
+                stringBuffer.append("Android领取地址:\n");
+                stringBuffer.append("链接：https://pan.baidu.com/s/11n-XkHhI7jLiC8vbSF8jWg 密码：eagc\n");
+                break;
+            case "D" :
+                stringBuffer.append("PS领取地址:\n");
+                stringBuffer.append("链接：https://pan.baidu.com/s/1o1A_61rkjqzkC9fPiScF3A 密码：ajx1\n");
+                   break;
+            case "d" :
+                stringBuffer.append("PS领取地址:\n");
+                stringBuffer.append("链接：https://pan.baidu.com/s/1o1A_61rkjqzkC9fPiScF3A 密码：ajx1\n");
+                break;
+        }
+        return stringBuffer.toString();
+    }
+
+    @Override
+    public String unknowMenu() {
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append("PS领取地址:\n");
+        return null;
+    }
+
 }
